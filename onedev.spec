@@ -19,6 +19,7 @@ URL: https://github.com/onedev/onedev
 License: MIT
 Group: Servers
 BuildRequires: jdk-current
+Requires: jre-current
 # For TanukiWrapper
 BuildRequires: ant
 BuildRequires: pkgconfig(cunit)
@@ -126,6 +127,8 @@ server {
 	listen 80;
 	listen [::]:80;
 	server_name yourhostname.yourdomain.ch;
+	access_log /srv/onedev/logs/access_log;
+	error_log /srv/onedev/logs/error_log;
 	include onedev.conf;
 }
 # Certbot takes care of adding HTTPS versions of the site when you create
@@ -152,7 +155,11 @@ touch %{buildroot}/srv/onedev/logs/console.log
 # and/or -Dwrapper.java.pidfile when building tanukiwrapper)
 %attr(-,onedev,onedev) /srv/onedev/bin
 %attr(-,onedev,onedev) %dir /srv/onedev/conf
-%config %attr(-,onedev,onedev) /srv/onedev/conf/*
+%config(noreplace) %attr(-,onedev,onedev) /srv/onedev/conf/hibernate.properties
+%config %attr(-,onedev,onedev) /srv/onedev/conf/logback.xml
+%config(noreplace) %attr(-,onedev,onedev) /srv/onedev/conf/server.properties
+%config %attr(-,onedev,onedev) /srv/onedev/conf/wrapper.conf
+%config %attr(-,onedev,onedev) /srv/onedev/conf/wrapper-license.conf
 /srv/onedev/incompatibilities
 /srv/onedev/lib
 %dir %attr(-,onedev,onedev) /srv/onedev/logs
