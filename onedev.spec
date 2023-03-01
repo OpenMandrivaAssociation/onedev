@@ -22,6 +22,7 @@ BuildRequires: jdk-current
 # For TanukiWrapper
 BuildRequires: ant
 BuildRequires: pkgconfig(cunit)
+BuildRequires: pkgconfig(ncursesw)
 
 %description
 A git hosting tool, similar to gitlab or github
