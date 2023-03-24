@@ -5,7 +5,7 @@
 
 Name: onedev
 Version: 8.0.4
-Release: 1
+Release: 2
 # List of available releases:
 # https://code.onedev.io/onedev/server/~builds?query=%22Job%22+is+%22Release%22
 Source0: https://code.onedev.io/~downloads/projects/160/builds/3460/artifacts/onedev-%{version}.tar.gz
@@ -18,8 +18,16 @@ Summary: A git hosting tool, similar to gitlab or github
 URL: https://github.com/onedev/onedev
 License: MIT
 Group: Servers
+
 BuildRequires: jdk-current
+
+Requires: curl
+Requires: git
 Requires: jre-current
+# https://code.onedev.io/onedev/server/~issues/903
+Requires: fontconfig
+Requires: fonts-ttf-dejavu
+
 # For TanukiWrapper
 BuildRequires: ant
 BuildRequires: pkgconfig(cunit)
