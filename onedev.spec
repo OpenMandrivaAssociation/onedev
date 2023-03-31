@@ -5,7 +5,7 @@
 
 Name: onedev
 Version: 8.0.14
-Release: 1
+Release: 2
 # List of available releases:
 # https://code.onedev.io/onedev/server/~builds?query=%22Job%22+is+%22Release%22
 Source0: https://code.onedev.io/~downloads/projects/160/builds/3526/artifacts/onedev-%{version}.tar.gz
