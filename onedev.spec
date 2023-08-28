@@ -4,15 +4,15 @@
 %global __requires_exclude jmod(.*)
 
 Name: onedev
-Version: 8.0.14
-Release: 2
+Version: 9.0.4
+Release: 1
 # List of available releases:
 # https://code.onedev.io/onedev/server/~builds?query=%22Job%22+is+%22Release%22
-Source0: https://code.onedev.io/~downloads/projects/160/builds/3526/artifacts/onedev-%{version}.tar.gz
+Source0: https://code.onedev.io/~downloads/projects/160/builds/4034/artifacts/onedev-%{version}.tar.gz
 # OneDev comes with a prebuilt version of Tanuki Wrapper
 # https://wrapper.tanukisoftware.com/doc/english/home.html
 # We replace it with a version we build from source.
-Source1: https://sourceforge.net/projects/wrapper/files/wrapper_src/Wrapper_3.5.51_20221111/wrapper_3.5.51_src.tar.gz/download#/wrapper-3.5.51.tar.gz
+Source1: https://sourceforge.net/projects/wrapper/files/wrapper_src/Wrapper_3.5.54_20230512/wrapper_3.5.54_src.tar.gz/download#/wrapper-3.5.54.tar.gz
 Source10: onedev.sysusers
 Summary: A git hosting tool, similar to gitlab or github
 URL: https://github.com/onedev/onedev
@@ -42,6 +42,7 @@ A git hosting tool, similar to gitlab or github
 %build
 . /etc/profile.d/90java.sh
 JAVA_VERSION=$(java -version 2>&1|head -n1 |cut -d' ' -f3 |sed -e 's,\",,g;s,-.*,,')
+JAVA_MAJOR=$(echo ${JAVA_VERSION} |cut -d. -f1)
 
 %ifarch %{ix86} %{arm} %{riscv32}
 BITS=32
@@ -50,7 +51,7 @@ BITS=64
 %endif
 
 cd wrapper_*_src
-ant -f build.xml -Dbits=$BITS -Dant.java.version=$JAVA_VERSION -Djavac.target.version=$JAVA_VERSION
+ant -f build.xml -Dbits=$BITS -Dant.java.version=$JAVA_VERSION -Djavac.target.version=$JAVA_MAJOR
 cd ..
 rm -f boot/wrapper-* boot/libwrapper-*.{so,sl,dylib,jnilib}
 %ifarch %{x86_64}
