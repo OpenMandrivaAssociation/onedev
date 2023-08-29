@@ -4,11 +4,11 @@
 %global __requires_exclude jmod(.*)
 
 Name: onedev
-Version: 9.0.4
+Version: 9.0.5
 Release: 1
 # List of available releases:
 # https://code.onedev.io/onedev/server/~builds?query=%22Job%22+is+%22Release%22
-Source0: https://code.onedev.io/~downloads/projects/160/builds/4034/artifacts/onedev-%{version}.tar.gz
+Source0: https://code.onedev.io/~downloads/projects/160/builds/4039/artifacts/onedev-%{version}.tar.gz
 # OneDev comes with a prebuilt version of Tanuki Wrapper
 # https://wrapper.tanukisoftware.com/doc/english/home.html
 # We replace it with a version we build from source.
